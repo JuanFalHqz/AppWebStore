@@ -7,7 +7,7 @@
 > - Pount of sale searsh
 > - Login
 > - Logout
-## Pages:
+## Main interfaces:
 * Login
 ![The San Juan Mountains are beautiful!](/Wallpapers/Login.png "Login")
 
