@@ -15,7 +15,7 @@
 ![The San Juan Mountains are beautiful!](/Wallpapers/Dashboard.png "Login")
 
 *  Pount of sale
-![The San Juan Mountains are beautiful!](/Wallpapers/Puntos de venta.png "Login")
+![The San Juan Mountains are beautiful!](/Wallpapers/Puntos_de_venta.png "Login")
 
 * Products
-![The San Juan Mountains are beautiful!](/Wallpapers/Todos los productos.png "Login")
+![The San Juan Mountains are beautiful!](/Wallpapers/Todos_los_productos.png "Login")
