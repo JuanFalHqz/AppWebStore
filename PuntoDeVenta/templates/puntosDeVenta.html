@@ -1,0 +1,89 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block head2 %}
+    <script src="{% static 'dist/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+{% endblock %}
+{% block columns %}
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Nombre
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Dircción
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Productos
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Opciones
+    </th>
+{% endblock %}
+{% block rows %}
+    {% for punto in object_list %}
+        <tr class="even">
+            <td class="dtr-control sorting_1" tabindex="0">{{ punto.name }}</td>
+            <td>{{ punto.addres }}</td>
+            <td>
+                {% if perms.PuntoDeVenta.change_Puntosdeventas %}
+                    <a href="{% url 'punto_de_venta' punto.id %}">
+                        {{ punto.productos.count }}
+                    </a>
+                {% else %}
+                    <span class="badge bg-danger">No posee los permisos</span>
+                {% endif %}
+
+            </td>
+            <td>
+                {% if perms.PuntoDeVenta.view_Puntosdeventas %}
+                    <a href="{% url 'punto_de_venta' punto.id %}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                {% endif %}
+                {% if perms.PuntoDeVenta.change_Puntosdeventas %}
+                    <a href="{% url 'puntos_de_venta_edit' punto.id %}" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                {% endif %}
+                {% if perms.PuntoDeVenta.delete_Puntosdeventas %}
+                    <a href="{% url 'puntos_de_venta_delete' punto.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                {% endif %}
+                {% if not perms.PuntoDeVenta.view_Puntosdeventas and not perms.PuntoDeVenta.change_Puntosdeventas and not perms.PuntoDeVenta.delete_Puntosdeventas %}
+                    <span class="badge bg-danger">No posee los permisos</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block foot %}
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Nombre
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Dircción
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Productos
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Opciones
+    </th>
+{% endblock %}
+{% block button %}
+    {% if perms.PuntoDeVenta.add_Punto_de_venta %}
+        <a href="{% url 'puntos_de_venta_create' %}" class="btn btn-primary btn-flat action_new ">
+            <i class="fas fa-plus">
+                Nuevo {{ button_new }}
+            </i>
+        </a>
+    {% endif %}
+
+{% endblock %}

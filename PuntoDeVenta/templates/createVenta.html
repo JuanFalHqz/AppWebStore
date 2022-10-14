@@ -1,0 +1,21 @@
+{% extends "form.html" %}
+{% load widget_tweaks %}
+{% block other_content %}
+{% endblock %}
+
+{% block form %}
+    {% for f in form.visible_fields %}
+        <div class="form-group">
+            <label for="">{{ f.label }}</label>
+            {{ f|add_class:'form-control'|attr:'autocomplete:off'|attr:'required' }}
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block button %}
+    <button type="submit" class="btn btn-primary btn-flat action_new swalDefaultSuccess" id="btn-register">
+        <i class="fas fa-send">
+            Registrar
+        </i>
+    </button>
+
+{% endblock %}

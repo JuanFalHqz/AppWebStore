@@ -1,0 +1,43 @@
+{% extends 'Dashboard.html' %}
+{% load static %}
+{% block head %}
+    <script src="{% static 'dist/plugins/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'dist/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'dist/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+    <script src="{% static 'library/sweetalert2-9.10.0/sweetalert2.all.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'dist/plugins/toastr/toastr.min.css' %}">
+    <script src="{% static 'dist/plugins/toastr/toastr.min.js' %}"></script>
+
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.js' %}"></script>
+{% endblock %}
+{% block my_content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">{{ title }}</h3>
+        </div>
+        <!-- /.card-header -->
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="card-body">
+                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    {% block other_content %}
+
+                    {% endblock %}
+                    {% block form %}
+
+                    {% endblock %}
+                    <input type="hidden" name="action" value="{{ action }}">
+                </div>
+            </div>
+            <div class="card-footer">
+                {% block button %}
+
+                {% endblock %}
+            </div>
+        </form>
+        <!-- /.card-body -->
+    </div>
+
+{% endblock %}

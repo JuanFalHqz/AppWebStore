@@ -1,0 +1,130 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block columns %}
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Nombre
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Descripción
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Código de barras
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Precio
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Precio mínimo
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Precio máximo
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Stock
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Foto
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Opciones
+    </th>
+{% endblock %}
+
+{% block rows %}
+    {% for p in productos %}
+        <tr class="even">
+            <td class="dtr-control sorting_1" tabindex="0">{{ p.name }}</td>
+            <td>{{ p.descriptions }}</td>
+            <td>{{ p.bar_code }}</td>
+            <td>{{ p.price }}</td>
+            <td>{{ p.price_max }}</td>
+            <td>{{ p.price_min }}</td>
+            <td>{{ p.stock }}</td>
+            <td><img class="img-fluid img-circle " src="{{ p.getImage }}" alt="Producto"
+                     style="max-width:50px;max-height: 50px">
+            </td>
+            <td>
+                {% if perms.PuntoDeVenta.view_products %}
+                    <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                {% endif %}
+                {% if perms.PuntoDeVenta.change_products   %}
+                    <a href="{% url 'products_edit' p.id %}" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                {% endif %}
+                {% if perms.PuntoDeVenta.delete_products %}
+                    <a href="{% url 'products_delete' p.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                {% endif %}
+                {% if not perms.PuntoDeVenta.view_products and not perms.PuntoDeVenta.change_products and not perms.PuntoDeVenta.delete_products%}
+                    <span class="badge bg-danger">No posee los permisos</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+
+{% endblock %}
+
+
+{% block foot %}
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Nombre
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Descripción
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Código de barras
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Precio
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Precio mínimo
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Precio máximo
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Stock
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Foto
+    </th>
+    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+        colspan="1" aria-sort="ascending"
+        aria-label="Rendering engine: activate to sort column descending">Opciones
+    </th>
+{% endblock %}
+
+{% block button %}
+    {% if perms.PuntoDeVenta.add_products %}
+        <a href="{% url 'products_crate' %}" class="btn btn-primary btn-flat action_new ">
+            <i class="fas fa-plus">
+                Nuevo {{ button_new }}
+            </i>
+        </a>
+    {% endif %}
+    <script src="{% static 'dist/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+{% endblock %}

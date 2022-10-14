@@ -1,0 +1,114 @@
+{% extends 'list.html' %}
+{% block title_detail_name %}
+    :{{ object.name }}
+{% endblock %}
+
+{% block detail %}
+{{ object.name }}. {{ object.addres }}
+{% endblock %}
+    {% block columns %}
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Nombre
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Descripción
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Código de barras
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Precio
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Precio mínimo
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Precio máximo
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Stock
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Foto
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Opciones
+        </th>
+    {% endblock %}
+
+    {% block rows %}
+        {% for p in object.productos.all %}
+            <tr class="even">
+                <td class="dtr-control sorting_1" tabindex="0">{{ p.name }}</td>
+                <td>{{ p.descriptions }}</td>
+                <td>{{ p.bar_code }}</td>
+                <td>{{ p.price }}</td>
+                <td>{{ p.price_max }}</td>
+                <td>{{ p.price_min }}</td>
+                <td>{{ p.stock }}</td>
+                <td><img class="img-fluid img-circle " src="{{ p.getImage }}" alt="Producto"
+                         style="max-width:50px;max-height: 50px">
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <a href="{% url 'products_edit' p.id %}" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'products_delete' p.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    {% endblock %}
+
+    {% block foot %}
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Nombre
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Descripción
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Código de barras
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Precio
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Precio mínimo
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Precio máximo
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Stock
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Foto
+        </th>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1" aria-sort="ascending"
+            aria-label="Rendering engine: activate to sort column descending">Opciones
+        </th>
+    {% endblock %}
