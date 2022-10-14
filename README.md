@@ -8,4 +8,4 @@
 > - Login
 > - Logout
 
-![The San Juan Mountains are beautiful!](/wallpapers/Log in.png "Login")
+![The San Juan Mountains are beautiful!](/Wallpapers/Dashboard.png "Login")
